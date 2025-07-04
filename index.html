@@ -34,6 +34,13 @@
       color: #3366cc;
       text-decoration: none;
     }
+    .about {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
     footer {
       text-align: center;
       margin-top: 2rem;
@@ -43,7 +50,8 @@
       background-color: #121212;
       color: #eee;
     }
-    .dark-mode .project {
+    .dark-mode .project,
+    .dark-mode .about {
       background-color: #1e1e1e;
       box-shadow: none;
     }
@@ -80,21 +88,23 @@
     </p>
   </header>
 
+  <section class="about">
+    <h2>About Me</h2>
+    <p>[Add a short paragraph about your interests, experience, and what you're looking for. This could include technical skills, areas of interest in ECE, and goals for internships or research.]</p>
+  </section>
+
   <section class="project">
     <h2>Project1</h2>
-    <p>A simple tool for reading and logging serial data from hardware sensors. Useful for monitoring live sensor input and analyzing behavior over time.</p>
     <a href="LINK" target="_blank">View on GitHub</a>
   </section>
 
   <section class="project">
     <h2>Project2</h2>
-    <p>A lightweight terminal-based chat application using Python sockets. Allows two or more users to send and receive messages over a local network.</p>
     <a href="LINK" target="_blank">View on GitHub</a>
   </section>
 
   <section class="project">
     <h2>Project3</h2>
-    <p>A visual simulation of a PID controller's response to different tuning parameters. Great for understanding feedback systems in control engineering.</p>
     <a href="LINK" target="_blank">View on GitHub</a>
   </section>
 
