@@ -46,14 +46,6 @@
       padding: 1.5rem;
       margin-bottom: 2rem;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-    .tab-content.active .project,
-    .tab-content.active.about {
-      opacity: 1;
-      transform: translateY(0);
     }
     footer {
       text-align: center;
@@ -91,15 +83,23 @@
       transform: scale(0.96);
     }
     .tab-content {
-      display: none;
+      position: absolute;
+      top: 180px;
+      left: 0;
+      width: 100%;
       opacity: 0;
-      transform: translateY(20px);
+      transform: translateX(100%);
       transition: opacity 0.4s ease, transform 0.4s ease;
+      display: none;
     }
     .tab-content.active {
       display: block;
       opacity: 1;
-      transform: translateY(0);
+      transform: translateX(0);
+    }
+    .container {
+      position: relative;
+      min-height: 400px;
     }
   </style>
 </head>
@@ -124,27 +124,29 @@
     <button onclick="showTab('projects')">Projects</button>
   </nav>
 
-  <section id="about" class="about tab-content active">
-    <h2>About Me</h2>
-    <p>[Add a short paragraph about your interests, experience, and what you're looking for. This could include technical skills, areas of interest in ECE, and goals for internships or research.]</p>
-  </section>
+  <div class="container">
+    <section id="about" class="about tab-content active">
+      <h2>About Me</h2>
+      <p>[Add a short paragraph about your interests, experience, and what you're looking for. This could include technical skills, areas of interest in ECE, and goals for internships or research.]</p>
+    </section>
 
-  <section id="projects" class="tab-content">
-    <div class="project">
-      <h2>Project1</h2>
-      <a href="LINK" target="_blank">View on GitHub</a>
-    </div>
+    <section id="projects" class="tab-content">
+      <div class="project">
+        <h2>Project1</h2>
+        <a href="LINK" target="_blank">View on GitHub</a>
+      </div>
 
-    <div class="project">
-      <h2>Project2</h2>
-      <a href="LINK" target="_blank">View on GitHub</a>
-    </div>
+      <div class="project">
+        <h2>Project2</h2>
+        <a href="LINK" target="_blank">View on GitHub</a>
+      </div>
 
-    <div class="project">
-      <h2>Project3</h2>
-      <a href="LINK" target="_blank">View on GitHub</a>
-    </div>
-  </section>
+      <div class="project">
+        <h2>Project3</h2>
+        <a href="LINK" target="_blank">View on GitHub</a>
+      </div>
+    </section>
+  </div>
 
   <footer>
     <p>&copy; 2025 Connor Moroney</p>
@@ -157,11 +159,27 @@
       btn.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
     });
 
+    let currentTab = document.querySelector('.tab-content.active');
+
     function showTab(tabId) {
-      document.querySelectorAll('.tab-content').forEach(tab => {
-        tab.classList.remove('active');
-      });
-      document.getElementById(tabId).classList.add('active');
+      if (currentTab.id === tabId) return;
+
+      const nextTab = document.getElementById(tabId);
+      currentTab.classList.remove('active');
+      currentTab.style.transform = 'translateX(-100%)';
+      currentTab.style.opacity = 0;
+
+      nextTab.style.transform = 'translateX(100%)';
+      nextTab.style.opacity = 0;
+      nextTab.style.display = 'block';
+
+      setTimeout(() => {
+        nextTab.classList.add('active');
+        nextTab.style.transform = 'translateX(0)';
+        nextTab.style.opacity = 1;
+        currentTab.style.display = 'none';
+        currentTab = nextTab;
+      }, 10);
     }
   </script>
 </body>
