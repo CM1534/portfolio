@@ -10,6 +10,7 @@
       margin: 0;
       padding: 2rem;
       background-color: #d4d4d4;
+      transition: background-color 0.3s, color 0.3s;
     }
     header {
       text-align: center;
@@ -24,6 +25,7 @@
       padding: 1rem;
       margin-bottom: 1.5rem;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background-color 0.3s;
     }
     .project h2 {
       margin-top: 0;
@@ -37,9 +39,32 @@
       margin-top: 2rem;
       color: #666;
     }
+    .dark-mode {
+      background-color: #121212;
+      color: #eee;
+    }
+    .dark-mode .project {
+      background-color: #1e1e1e;
+      box-shadow: none;
+    }
+    .dark-mode a {
+      color: #66aaff;
+    }
+    #toggle-dark {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      padding: 8px 12px;
+      cursor: pointer;
+      background-color: #444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
+  <button id="toggle-dark">Dark Mode</button>
   <header>
     <h1>Connor Moroney</h1>
     <p>Class of 2028 | Electrical & Computer Engineering</p>
@@ -57,24 +82,32 @@
 
   <section class="project">
     <h2>Project1</h2>
-    <p>project1's description TBD</p>
+    <p>A simple tool for reading and logging serial data from hardware sensors. Useful for monitoring live sensor input and analyzing behavior over time.</p>
     <a href="LINK" target="_blank">View on GitHub</a>
   </section>
 
   <section class="project">
     <h2>Project2</h2>
-    <p>project2's description TBD</p>
+    <p>A lightweight terminal-based chat application using Python sockets. Allows two or more users to send and receive messages over a local network.</p>
     <a href="LINK" target="_blank">View on GitHub</a>
   </section>
 
   <section class="project">
     <h2>Project3</h2>
-    <p>project3's description TBD</p>
+    <p>A visual simulation of a PID controller's response to different tuning parameters. Great for understanding feedback systems in control engineering.</p>
     <a href="LINK" target="_blank">View on GitHub</a>
   </section>
 
   <footer>
     <p>&copy; 2025 Connor Moroney</p>
   </footer>
+
+  <script>
+    const btn = document.getElementById('toggle-dark');
+    btn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      btn.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
+    });
+  </script>
 </body>
 </html>
