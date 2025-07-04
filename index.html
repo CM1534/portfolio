@@ -9,7 +9,8 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 2rem;
-      background-color: #d4d4d4;
+      background-color: #eeeeee;
+      color: #222;
       transition: background-color 0.3s, color 0.3s;
     }
     header {
@@ -29,15 +30,27 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      background-color: #3366cc;
+      background-color: #555;
       color: white;
+      transition: background-color 0.3s;
+    }
+    nav button:hover {
+      background-color: #777;
     }
     .project, .about {
-      background: white;
+      background: #f8f8f8;
       border-radius: 10px;
       padding: 1.5rem;
       margin-bottom: 2rem;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .tab-content.active .project,
+    .tab-content.active.about {
+      opacity: 1;
+      transform: translateY(0);
     }
     footer {
       text-align: center;
@@ -45,12 +58,12 @@
       color: #666;
     }
     .dark-mode {
-      background-color: #121212;
+      background-color: #1f1f1f;
       color: #eee;
     }
     .dark-mode .project,
     .dark-mode .about {
-      background-color: #1e1e1e;
+      background-color: #2c2c2c;
       box-shadow: none;
     }
     .dark-mode a {
@@ -66,12 +79,21 @@
       color: white;
       border: none;
       border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    #toggle-dark:hover {
+      background-color: #666;
     }
     .tab-content {
       display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
     .tab-content.active {
       display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -87,8 +109,7 @@
       <a href="https://www.linkedin.com/in/connormoroneyprofile/">LinkedIn</a>
     </p>
     <p>
-      <a href="Resume2425.pdf" download style="text-decoration:none; padding:8px 15px; 
-      background:#3366cc; color:white; border-radius:5px;">Download Resume</a>
+      <a href="Resume2425.pdf" download style="text-decoration:none; padding:8px 15px; background:#555; color:white; border-radius:5px;">Download Resume</a>
     </p>
   </header>
 
@@ -99,7 +120,7 @@
 
   <section id="about" class="about tab-content active">
     <h2>About Me</h2>
-    <p>[Add a short paragraph about your interests, experience, and what you're looking for. This could include technical skills, areas of interest in ECE, and goals for internships or research. Should delete soon]</p>
+    <p>[Add a short paragraph about your interests, experience, and what you're looking for. This could include technical skills, areas of interest in ECE, and goals for internships or research.]</p>
   </section>
 
   <section id="projects" class="tab-content">
