@@ -19,22 +19,20 @@
     h1 {
       font-size: 2.5rem;
     }
-    .project {
-      background: white;
-      border-radius: 10px;
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: background-color 0.3s;
+    nav {
+      text-align: center;
+      margin-bottom: 2rem;
     }
-    .project h2 {
-      margin-top: 0;
+    nav button {
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #3366cc;
+      color: white;
     }
-    .project a {
-      color: #3366cc;
-      text-decoration: none;
-    }
-    .about {
+    .project, .about {
       background: white;
       border-radius: 10px;
       padding: 1.5rem;
@@ -69,6 +67,12 @@
       border: none;
       border-radius: 5px;
     }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -88,24 +92,31 @@
     </p>
   </header>
 
-  <section class="about">
+  <nav>
+    <button onclick="showTab('about')">About</button>
+    <button onclick="showTab('projects')">Projects</button>
+  </nav>
+
+  <section id="about" class="about tab-content active">
     <h2>About Me</h2>
-    <p>[Add a short paragraph about your interests, experience, and what you're looking for. This could include technical skills, areas of interest in ECE, and goals for internships or research.]</p>
+    <p>[Add a short paragraph about your interests, experience, and what you're looking for. This could include technical skills, areas of interest in ECE, and goals for internships or research. Should delete soon]</p>
   </section>
 
-  <section class="project">
-    <h2>Project1</h2>
-    <a href="LINK" target="_blank">View on GitHub</a>
-  </section>
+  <section id="projects" class="tab-content">
+    <div class="project">
+      <h2>Project1</h2>
+      <a href="LINK" target="_blank">View on GitHub</a>
+    </div>
 
-  <section class="project">
-    <h2>Project2</h2>
-    <a href="LINK" target="_blank">View on GitHub</a>
-  </section>
+    <div class="project">
+      <h2>Project2</h2>
+      <a href="LINK" target="_blank">View on GitHub</a>
+    </div>
 
-  <section class="project">
-    <h2>Project3</h2>
-    <a href="LINK" target="_blank">View on GitHub</a>
+    <div class="project">
+      <h2>Project3</h2>
+      <a href="LINK" target="_blank">View on GitHub</a>
+    </div>
   </section>
 
   <footer>
@@ -118,6 +129,13 @@
       document.body.classList.toggle('dark-mode');
       btn.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
     });
+
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.getElementById(tabId).classList.add('active');
+    }
   </script>
 </body>
 </html>
