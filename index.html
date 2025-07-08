@@ -6,8 +6,15 @@
   <title>Connor Moroney - Portfolio</title>
   <style>
     :root {
-      --primary: #1f2937;
+      --primary: #2f4c78;
+      --secondary: #4a668e;
+      --tertiary: #4a658e;
+      --highlight: #dba448;
+      --warn: #de6236;
+      --error: #c62336;
       --accent: #3b82f6;
+      --dark-button: #1f2939;
+
       --light-bg: #f9fafb;
       --dark-bg: #111827;
       --light-card: #ffffff;
@@ -18,7 +25,7 @@
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 2rem;
       background-color: var(--light-bg);
@@ -30,13 +37,54 @@
     header {
       text-align: center;
       margin-bottom: 2rem;
+      background-color: var(--secondary);
+      color: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+      position: relative;
     }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      width: 12px;
+    background: linear-gradient(
+      to bottom,
+      #c62336 0%,
+      #c62336 20%,
+      #de6236 20%,
+      #de6236 40%,
+      #dba448 40%,
+      #dba448 60%,
+      #4a658e 60%,
+      #4a658e 80%,
+      #2f4c78 80%,
+      #2f4c78 100%
+    );
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+    }
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 12px;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+    }
+
     h1 {
       font-size: 2.8rem;
       margin-bottom: 0.5rem;
     }
     header p, header a {
       font-size: 1.1rem;
+      color: #fafafb;
     }
 
     nav {
@@ -55,24 +103,36 @@
       transition: background-color 0.3s, transform 0.1s;
     }
     nav button:hover {
-      background-color: var(--accent);
+      background-color: var(--highlight);
     }
     nav button:active {
       transform: scale(0.97);
     }
 
-    .project, .about, .resume {
+    .about {
       background: var(--light-card);
-      border-radius: 1rem;
-      padding: 2rem;
+      border: 4px solid var(--warn);
+      border-radius: 3rem;
+      padding: 1.5rem;
       margin-bottom: 2rem;
       box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .project, .resume {
+      background: var(--light-card);
+      border: 4px solid var(--primary);
+      border-radius: 3rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow);
+      position: relative;
     }
 
     footer {
       text-align: center;
       color: #666;
-      margin-top: 3rem;
+      margin-top: 1rem;
     }
 
     .dark-mode {
@@ -84,25 +144,29 @@
     .dark-mode .resume {
       background-color: var(--dark-card);
     }
+    .dark-mode header {
+      background-color: var(--tertiary);
+    }
     .dark-mode a {
       color: #60a5fa;
     }
 
     #toggle-dark {
-      position: fixed;
-      top: 10px;
-      right: 10px;
+      position: absolute;
+      top: 16px;
+      right: 16px;
       padding: 0.5rem 1rem;
       cursor: pointer;
-      background-color: var(--primary);
+      background-color: var(--dark-button);
       color: white;
       border: none;
       border-radius: 9999px;
       font-weight: bold;
       transition: background-color 0.3s;
+      z-index: 1000;
     }
     #toggle-dark:hover {
-      background-color: var(--accent);
+      background-color: var(--highlight);
     }
     #toggle-dark:active {
       transform: scale(0.97);
@@ -126,7 +190,7 @@
 
     .container {
       position: relative;
-      min-height: 400px;
+      min-height: 300px;
       margin-top: -1rem;
     }
 
@@ -147,8 +211,8 @@
   </style>
 </head>
 <body>
-  <button id="toggle-dark">Dark Mode</button>
   <header>
+    <button id="toggle-dark">Dark Mode</button>
     <h1>Connor Moroney</h1>
     <p>Carnegie Mellon University | Class of 2028 </p>
     <p>Electrical & Computer Engineering | Engineering & Public Policy</p>
@@ -158,7 +222,7 @@
       <a href="https://www.linkedin.com/in/connormoroneyprofile/">LinkedIn</a>
     </p>
     <p>
-      <a href="Resume2425.pdf" download style="padding: 0.6rem 1.2rem; background: var(--primary); color: white; border-radius: 9999px; font-weight: bold; display: inline-block;">Download Resume</a>
+      <a href="Resume2425.pdf" download style="padding: 0.6rem 1.2rem; background: #1f2939; color: white; border-radius: 9999px; font-weight: bold; display: inline-block;">Download Resume</a>
     </p>
   </header>
 
